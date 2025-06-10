@@ -1,0 +1,263 @@
+/* assets/css/members.css */
+
+/* Hero section for members page - оставляем прежним, он красивый */
+.members-hero {
+    padding: 80px 60px 50px;
+    background: linear-gradient(135deg, #1a183f, #100c29);
+    color: #fff;
+    margin-bottom: 80px;
+    border-radius: 25px;
+    box-shadow: 0 15px 40px rgba(0,0,0,0.4);
+    position: relative;
+    overflow: hidden;
+    text-align: center;
+}
+
+.members-hero .hero-content {
+    max-width: 900px;
+    margin: 0 auto;
+    position: relative;
+    z-index: 2;
+}
+
+.members-hero .hero-content h1 {
+    font-size: 4rem;
+    margin-bottom: 15px;
+    color: var(--secondary-color);
+    text-shadow: 0 0 20px rgba(138, 180, 248, 0.4);
+    font-weight: 700;
+    letter-spacing: -0.03em;
+}
+
+.members-hero .hero-content p {
+    font-size: 1.35rem;
+    color: var(--text-light);
+    line-height: 1.6;
+    max-width: 800px;
+    margin: 0 auto;
+}
+
+/* Members Section Styling */
+.members-section {
+    padding: 0 60px 80px; /* Отступы по бокам и снизу самой секции */
+    max-width: 1200px; /* Максимальная ширина контента */
+    margin: 0 auto; /* Центрируем секцию */
+}
+
+.members-grid {
+    display: grid;
+    /* Убедимся, что браузер правильно рассчитывает колонки */
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 40px; /* **ОТСТУПЫ!** 40px по горизонтали и ВЕРТИКАЛИ (снизу каждой карточки перед следующей) */
+    align-items: stretch; /* Важно, чтобы карточки растягивались на всю высоту ячейки грида */
+}
+
+/* Стили для белой, закругленной карточки участника с тенью */
+.member-card.project-card-style {
+    background: #FFFFFF; /* Чисто белый фон карточки */
+    border-radius: 20px; /* Более сильное скругление углов */
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1); /* Выраженная, но не слишком агрессивная тень */
+    transition: transform 0.3s ease, box-shadow 0.3s ease; /* Плавная анимация при наведении */
+    padding: 30px; /* Увеличиваем внутренние отступы для более "воздушного" вида */
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    height: 100%; /* Гарантируем, что карточка займет всю высоту ячейки грида */
+    box-sizing: border-box; /* Важно: padding не увеличивает общую ширину/высоту элемента */
+}
+
+.member-card.project-card-style:hover {
+    transform: translateY(-8px); /* Поднимаем карточку при наведении */
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.2); /* Увеличиваем тень при наведении */
+}
+
+/* Заголовок и роль участника */
+.member-header-info {
+    margin-bottom: 15px;
+}
+
+.member-header-info h3 {
+    font-size: 1.8rem;
+    color: var(--text-dark);
+    margin-bottom: 5px;
+    font-weight: 700;
+    line-height: 1.3;
+}
+
+.member-role {
+    font-size: 1.1rem;
+    color: var(--primary-color);
+    font-weight: 600;
+}
+
+/* Описание участника */
+.member-description {
+    font-size: 1rem;
+    color: var(--text-medium);
+    line-height: 1.6;
+    margin-bottom: 25px; /* Отступ перед кнопками */
+    flex-grow: 1; /* Описание занимает оставшееся пространство */
+    display: -webkit-box;
+    -webkit-line-clamp: 4; /* Ограничиваем описание 4 строками */
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+/* Контейнер для социальных иконок */
+.member-socials-button {
+    margin-top: auto; /* Прижимает иконки к низу карточки */
+    text-align: left;
+    display: flex; /* Делаем flexbox для размещения нескольких иконок в ряд */
+    gap: 10px; /* Отступ между самими иконками соцсетей */
+}
+
+/* Стилизация простой иконки (черная иконка без фона и рамок) */
+.member-socials-button .button-small {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 40px;
+    height: 40px;
+    padding: 0;
+    background: transparent;
+    color: var(--text-dark);
+    border: none;
+    border-radius: 50%;
+    text-decoration: none;
+    font-size: 0;
+    transition: all 0.2s ease;
+    cursor: pointer;
+    box-shadow: none;
+    flex-shrink: 0;
+}
+
+.member-socials-button .button-small:hover {
+    background: rgba(0, 0, 0, 0.05);
+    transform: translateY(-2px);
+    box-shadow: none;
+    color: var(--primary-color);
+}
+
+.member-socials-button .button-small i[data-lucide] {
+    width: 24px;
+    height: 24px;
+    stroke-width: 2;
+    color: inherit;
+}
+
+
+/* Media Queries for members.css - Адаптивность */
+@media (max-width: 992px) {
+    .members-hero, .members-section {
+        padding-left: 40px;
+        padding-right: 40px;
+    }
+    .members-hero .hero-content h1 {
+        font-size: 3.5rem;
+    }
+    .members-hero .hero-content p {
+        font-size: 1.2rem;
+    }
+    .members-grid {
+        gap: 30px; /* Уменьшаем отступы на планшетах */
+        grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    }
+    .member-card.project-card-style {
+        padding: 25px;
+    }
+    .member-header-info h3 {
+        font-size: 1.6rem;
+    }
+    .member-role {
+        font-size: 1rem;
+    }
+    .member-description {
+        font-size: 0.9rem;
+        -webkit-line-clamp: 5;
+    }
+    .member-socials-button .button-small {
+        width: 36px;
+        height: 36px;
+    }
+    .member-socials-button .button-small i[data-lucide] {
+        width: 20px;
+        height: 20px;
+    }
+}
+
+@media (max-width: 768px) {
+    .members-hero, .members-section {
+        padding-left: 20px;
+        padding-right: 20px;
+    }
+    .members-hero .hero-content h1 {
+        font-size: 2.8rem;
+    }
+    .members-hero .hero-content p {
+        font-size: 1rem;
+    }
+    .members-grid {
+        gap: 25px; /* Еще уменьшаем отступы на мобильных */
+        grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    }
+    .member-card.project-card-style {
+        padding: 20px;
+    }
+    .member-header-info h3 {
+        font-size: 1.4rem;
+    }
+    .member-role {
+        font-size: 0.9rem;
+    }
+    .member-description {
+        font-size: 0.85rem;
+        -webkit-line-clamp: 6;
+    }
+    .member-socials-button .button-small {
+        width: 32px;
+        height: 32px;
+    }
+    .member-socials-button .button-small i[data-lucide] {
+        width: 18px;
+        height: 18px;
+    }
+}
+
+@media (max-width: 480px) {
+    .members-hero, .members-section {
+        padding-left: 15px;
+        padding-right: 15px;
+    }
+    .members-hero .hero-content h1 {
+        font-size: 2rem;
+    }
+    .members-hero .hero-content p {
+        font-size: 0.9rem;
+    }
+    .members-grid {
+        grid-template-columns: 1fr; /* Одна колонка на очень маленьких экранах */
+        gap: 20px; /* Последнее уменьшение отступов */
+    }
+    .member-card.project-card-style {
+        padding: 15px;
+    }
+    .member-header-info h3 {
+        font-size: 1.2rem;
+    }
+    .member-role {
+        font-size: 0.85rem;
+    }
+    .member-description {
+        font-size: 0.8rem;
+        -webkit-line-clamp: unset;
+    }
+    .member-socials-button .button-small {
+        width: 28px;
+        height: 28px;
+    }
+    .member-socials-button .button-small i[data-lucide] {
+        width: 16px;
+        height: 16px;
+    }
+}

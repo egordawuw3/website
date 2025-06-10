@@ -1,0 +1,397 @@
+/* assets/css/projects-page.css */
+
+/* Секция заголовка/Hero проектов */
+.projects-hero-section {
+    padding: 60px 60px 40px;
+    background: linear-gradient(135deg, #1a183f, #100c29);
+    color: #fff;
+    margin-bottom: 60px;
+    border-radius: 20px;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+}
+
+.projects-hero-content {
+    display: flex;
+    align-items: center;
+    gap: 25px;
+    max-width: 1000px;
+    margin: 0 auto;
+}
+
+.projects-hero-icon i[data-lucide] {
+    width: 60px;
+    height: 60px;
+    color: #c0b9ff;
+    flex-shrink: 0;
+}
+
+.projects-hero-text h1 {
+    font-size: 3.5rem;
+    margin-bottom: 15px;
+    color: #c0b9ff;
+    text-shadow: 0 0 15px rgba(192, 185, 255, 0.4);
+    font-weight: 600;
+}
+
+.projects-hero-text p {
+    font-size: 1.25rem;
+    color: #d0ceff;
+    line-height: 1.6;
+}
+
+/* Секция фильтров категорий */
+.projects-filters-section {
+    padding: 0 60px;
+    margin-bottom: 60px;
+}
+
+.main-category-tabs, .subcategory-tabs {
+    display: flex;
+    justify-content: center;
+    gap: 15px;
+    margin-bottom: 25px;
+    background: #ffffff;
+    border-radius: 16px;
+    padding: 10px;
+    box-shadow: 0 8px 16px rgba(0,0,0,0.05);
+    flex-wrap: wrap;
+}
+
+.subcategory-tabs {
+    margin-top: -10px;
+    margin-bottom: 40px;
+}
+
+.main-category-tab, .subcategory-tab {
+    background-color: transparent;
+    border: none;
+    color: #4d4d66;
+    padding: 12px 28px;
+    font-size: 1.05rem;
+    font-weight: 600;
+    cursor: pointer;
+    border-radius: 10px;
+    transition: background-color 0.3s ease, color 0.3s ease, box-shadow 0.3s ease, transform 0.2s ease;
+}
+
+.main-category-tab:hover, .subcategory-tab:hover {
+    background-color: #f0f0f0;
+    color: #1e1a40;
+    transform: translateY(-2px);
+}
+
+.main-category-tab.active, .subcategory-tab.active {
+    background: linear-gradient(90deg, #6c63ff, #8ab4f8);
+    color: #ffffff;
+    box-shadow: 0 4px 10px rgba(108, 99, 255, 0.3);
+    transform: translateY(-1px);
+}
+
+/* Сетка проектов */
+.projects-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 30px;
+}
+
+/* Общие стили для карточек проектов */
+.project-card {
+    background: #ffffff;
+    border-radius: 16px;
+    box-shadow: 0 8px 20px rgba(0,0,0,0.08);
+    overflow: hidden;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    cursor: pointer; /* Делаем карточку кликабельной */
+    display: flex; /* Важно для flex-direction: column; и height: 100%; */
+    flex-direction: column;
+    height: 100%; /* Занимает всю высоту ячейки сетки */
+    color: #191e27; /* Общий цвет текста для карточек */
+}
+
+.project-card:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 15px 30px rgba(0,0,0,0.15);
+}
+
+/* Стили для изображений проектов (включая баннеры) */
+.programming-card .project-thumbnail,
+.design-default-card .project-thumbnail,
+.design-banner-card .project-thumbnail {
+    width: 100%;
+    /* Для programming и default design */
+    height: 220px; /* Фиксированная высота превью */
+    object-fit: cover; /* Обрезает изображение, чтобы заполнить область */
+
+    /* НОВЫЕ СТИЛИ для эффекта Grayscale */
+    filter: grayscale(100%); /* Делаем изображение черно-белым */
+    transition: filter 0.5s ease-in-out; /* Плавный переход для фильтра */
+}
+
+/* Эффект при наведении на КАРТОЧКУ проекта */
+.project-card:hover .project-thumbnail {
+    filter: grayscale(0%); /* При наведении на карточку, изображение становится цветным */
+}
+
+
+/* Дизайн (Баннер) карточки - ТОЛЬКО ИЗОБРАЖЕНИЕ, без текста */
+.design-banner-card {
+    background: #100c29; /* Ещё более темный однотонный фон для баннеров */
+    padding: 0; /* Убираем паддинг */
+    border: none;
+    box-shadow: 0 8px 20px rgba(0,0,0,0.2);
+    display: flex;
+    flex-direction: column;
+    justify-content: center; /* Центрируем изображение по вертикали */
+    align-items: center; /* Центрируем изображение по горизонтали */
+    min-height: 250px; /* Минимальная высота для баннеров, чтобы они не были слишком маленькими */
+}
+
+.design-banner-card .project-thumbnail {
+    /* Эти стили специфичны для баннеров, переопределяя общие height и object-fit, если нужно */
+    width: 100%;
+    height: 100%; /* Занимает всю высоту родителя (карточки) */
+    object-fit: contain; /* Сохраняет пропорции, помещая весь баннер внутри карточки */
+    border-bottom: none; /* Убираем нижнюю границу */
+}
+
+
+/* Монтаж карточки - с видеоплеером и текстом */
+.montage-card .video-container {
+    position: relative;
+    width: 100%;
+    padding-bottom: 56.25%; /* 16:9 Aspect Ratio (9 / 16 * 100%) */
+    height: 0;
+    overflow: hidden;
+    background-color: #000;
+    border-bottom: 1px solid #f0f0f0;
+}
+
+.montage-card .video-container iframe {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    border: 0;
+}
+
+/* Общие стили для информационного блока текста (для programming и default design, montage) */
+.project-info {
+    padding: 25px;
+    flex-grow: 1; /* Позволяет блоку занимать оставшееся пространство */
+    display: flex;
+    flex-direction: column;
+}
+
+.project-info h3 {
+    font-size: 1.35rem;
+    color: #1e1a40;
+    margin-bottom: 12px;
+    font-weight: 600;
+}
+
+.project-info p {
+    font-size: 0.98rem;
+    color: #4d4d66;
+    margin-bottom: 20px;
+    line-height: 1.6;
+}
+
+/* Стиль для кнопки "Перейти на сайт" */
+.button-project {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    padding: 10px 18px;
+    background-color: #6c63ff;
+    color: #fff;
+    text-decoration: none;
+    border-radius: 8px;
+    font-size: 0.95rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: background-color 0.3s ease, transform 0.2s ease, box-shadow 0.3s ease;
+    box-shadow: 0 4px 10px rgba(108, 99, 255, 0.3);
+    margin-top: auto; /* Прижимает кнопку к низу блока project-info */
+    align-self: flex-start; /* Выравнивает кнопку по левому краю */
+}
+
+.button-project:hover {
+    background-color: #8ab4f8;
+    transform: translateY(-2px);
+    box-shadow: 0 6px 15px rgba(138, 180, 248, 0.4);
+}
+
+.button-project i[data-lucide] {
+    width: 18px;
+    height: 18px;
+}
+
+
+/* Заглушка для отсутствующих проектов */
+.no-projects-placeholder {
+    display: none; /* Скрыто по умолчанию */
+    text-align: center;
+    width: 100%;
+    padding: 60px 20px;
+    background: #ffffff;
+    border-radius: 16px;
+    box-shadow: 0 8px 16px rgba(0,0,0,0.05);
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    min-height: 300px;
+    color: #191e27;
+    grid-column: 1 / -1; /* Занимает всю ширину сетки */
+}
+
+.no-projects-placeholder.active-placeholder {
+    display: flex; /* Показывает заглушку, когда нужно */
+}
+
+.no-projects-placeholder i[data-lucide] {
+    width: 80px;
+    height: 80px;
+    color: #6c63ff;
+    margin-bottom: 25px;
+}
+
+.no-projects-placeholder p {
+    font-size: 2rem;
+    color: #4d4d66;
+    font-weight: 600;
+}
+
+/* Адаптивность для страницы проектов */
+@media (max-width: 992px) {
+    .projects-hero-section, .projects-filters-section {
+        padding: 0 40px;
+    }
+    .projects-hero-content {
+        flex-direction: column;
+        text-align: center;
+        gap: 15px;
+    }
+    .projects-hero-icon i[data-lucide] {
+        width: 50px;
+        height: 50px;
+    }
+    .projects-hero-text h1 {
+        font-size: 3rem;
+    }
+    .projects-hero-text p {
+        font-size: 1.15rem;
+    }
+    .main-category-tabs, .subcategory-tabs {
+        gap: 10px;
+        padding: 8px;
+    }
+    .main-category-tab, .subcategory-tab {
+        padding: 10px 20px;
+        font-size: 1rem;
+        flex: 1 1 auto; /* Растягивает кнопки, чтобы заполнить пространство */
+    }
+    .project-thumbnail {
+        height: 180px;
+        /* На маленьких экранах не убираем grayscale, так как hover может быть неочевиден */
+        filter: grayscale(100%); 
+    }
+    /* Для баннеров на мобильных - только превью */
+    .design-banner-card {
+        min-height: 200px; /* Немного уменьшим мин. высоту на планшетах */
+    }
+    .design-banner-card .project-thumbnail {
+        /* max-height: 250px; */ /* Закомментировано, так как height: 100% и object-fit: contain уже хорошо работают */
+    }
+
+    .project-info h3 {
+        font-size: 1.25rem;
+    }
+    .project-info p {
+        font-size: 0.9rem;
+    }
+    .no-projects-placeholder p {
+        font-size: 1.7rem;
+    }
+}
+
+@media (max-width: 768px) {
+    #mainContent {
+        margin-left: 0;
+        padding: 30px 20px;
+    }
+    .sidebar {
+        display: none;
+    }
+    .projects-hero-section, .projects-filters-section {
+        padding: 0 20px;
+    }
+    .projects-hero-text h1 {
+        font-size: 2.5rem;
+    }
+    .projects-hero-text p {
+        font-size: 1rem;
+    }
+    .main-category-tabs, .subcategory-tabs {
+        flex-wrap: wrap;
+        justify-content: center;
+        gap: 8px;
+        padding: 6px;
+    }
+    .main-category-tab, .subcategory-tab {
+        flex: 1 1 auto;
+        padding: 10px 15px;
+        font-size: 0.95rem;
+    }
+    .projects-grid {
+        grid-template-columns: 1fr; /* Одна колонка на мобильных */
+    }
+    .project-thumbnail {
+        height: 160px;
+        filter: grayscale(100%); /* На маленьких экранах не убираем grayscale */
+    }
+    /* Для баннеров на очень маленьких экранах - только превью */
+    .design-banner-card {
+        min-height: 180px; /* Ещё уменьшим мин. высоту на мобильных */
+    }
+    .design-banner-card .project-thumbnail {
+        /* max-height: 200px; */ /* Закомментировано */
+    }
+    .no-projects-placeholder i[data-lucide] {
+        width: 60px;
+        height: 60px;
+    }
+    .no-projects-placeholder p {
+        font-size: 1.5rem;
+    }
+    .button-project {
+        font-size: 0.85rem;
+        padding: 8px 15px;
+    }
+}
+
+@media (max-width: 480px) {
+    .projects-hero-section, .projects-filters-section {
+        padding: 0 15px;
+    }
+    .projects-hero-text h1 {
+        font-size: 2rem;
+    }
+    .projects-hero-text p {
+        font-size: 0.9rem;
+    }
+    .main-category-tabs, .subcategory-tabs {
+        padding: 5px;
+    }
+    .main-category-tab, .subcategory-tab {
+        font-size: 0.85rem;
+        padding: 8px 10px;
+    }
+    .no-projects-placeholder i[data-lucide] {
+        width: 50px;
+        height: 50px;
+    }
+    .no-projects-placeholder p {
+        font-size: 1.2rem;
+    }
+}

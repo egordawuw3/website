@@ -1,0 +1,356 @@
+/* skills.css */
+
+/* Hero section for skills page */
+.hero {
+    padding: 80px 60px 50px;
+    background: linear-gradient(135deg, #1a183f, #100c29);
+    color: #fff; /* Общий цвет текста для hero-секции, если нет специфичного */
+    margin-bottom: 80px;
+    border-radius: 25px;
+    box-shadow: 0 15px 40px rgba(0,0,0,0.4);
+    position: relative;
+    overflow: hidden;
+    text-align: center;
+}
+
+.hero-content {
+    max-width: 900px;
+    margin: 0 auto;
+    position: relative;
+    z-index: 2;
+}
+
+.hero-content h1 {
+    font-size: 4rem;
+    margin-bottom: 15px;
+    color: var(--secondary-color); /* Акцентный цвет для заголовка hero */
+    text-shadow: 0 0 20px rgba(138, 180, 248, 0.4);
+    font-weight: 700;
+    letter-spacing: -0.03em;
+}
+
+.hero-content p {
+    font-size: 1.35rem;
+    color: var(--text-light); /* Светлый текст для описания hero */
+    line-height: 1.6;
+    max-width: 800px;
+    margin: 0 auto;
+}
+
+/* Skills Section Styling */
+.skills-section {
+    padding: 0 60px 80px;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+/* Tab Navigation */
+.skills-tabs-container {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+    margin-bottom: 60px;
+    background-color: var(--dark-bg); /* Темный фон контейнера вкладок */
+    border-radius: 18px;
+    padding: 10px;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+    width: fit-content;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+/* Стили для неактивных вкладок (по умолчанию) */
+.skills-tab {
+    background-color: transparent; /* Прозрачный фон по умолчанию */
+    border: none;
+    color: var(--text-light); /* Текст для неактивных вкладок - должен быть виден на dark-bg */
+    padding: 12px 30px;
+    font-size: 1.1rem;
+    font-weight: 600;
+    cursor: pointer;
+    border-radius: 12px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    transition: background-color 0.3s ease, color 0.3s ease, transform 0.2s ease, box-shadow 0.3s ease;
+}
+
+.skills-tab i[data-lucide] {
+    width: 22px;
+    height: 22px;
+    color: var(--text-light); /* Иконка для неактивных вкладок */
+    transition: color 0.3s ease;
+}
+
+/* Стили при наведении на неактивную вкладку */
+.skills-tab:hover {
+    background-color: rgba(255, 255, 255, 0.08); /* Слегка светлый фон при наведении */
+    color: var(--primary-color); /* Акцентный цвет для текста при наведении */
+    transform: translateY(-2px);
+}
+
+.skills-tab:hover i[data-lucide] {
+    color: var(--primary-color); /* Акцентный цвет для иконки при наведении */
+}
+
+/* Стили для активной вкладки */
+.skills-tab.active {
+    background: linear-gradient(90deg, var(--primary-color), var(--secondary-color)); /* Градиентный фон активной вкладки */
+    color: #000000; /* !!! ЧИСТО БЕЛЫЙ ТЕКСТ ДЛЯ АКТИВНОЙ ВКЛАДКИ !!! */
+    box-shadow: 0 4px 15px rgba(108, 99, 255, 0.4);
+    transform: translateY(0);
+}
+
+.skills-tab.active i[data-lucide] {
+    color: #ffffff; /* !!! ЧИСТО БЕЛАЯ ИКОНКА ДЛЯ АКТИВНОЙ ВКЛАДКИ !!! */
+}
+
+/* Common style for content sections */
+.skills-content {
+    display: none; /* Скрыто по умолчанию */
+    background-color: var(--light-bg); /* Светлый фон для содержимого вкладок */
+    padding: 40px;
+    border-radius: 20px;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.15);
+    margin-top: 30px;
+}
+
+.skills-content.active {
+    display: block; /* Показывается, когда активно */
+    animation: fadeIn 0.5s ease-out forwards; /* Анимация появления */
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(20px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+/* Skill Bars */
+.skill-categories h3 {
+    font-size: 2rem;
+    color: var(--text-dark);
+    margin-top: 40px;
+    margin-bottom: 25px;
+    text-align: center;
+    position: relative;
+    font-weight: 700;
+}
+
+.skill-categories h3:not(:first-child) {
+    margin-top: 60px;
+}
+
+.skill-categories h3::after {
+    content: '';
+    display: block;
+    width: 80px;
+    height: 4px;
+    background: linear-gradient(90deg, var(--primary-color), var(--secondary-color));
+    margin: 10px auto 0;
+    border-radius: 2px;
+}
+
+.skill-item {
+    margin-bottom: 25px;
+    font-size: 1.1rem;
+    color: var(--text-medium);
+}
+
+.skill-item span:first-child {
+    display: block;
+    margin-bottom: 10px;
+    font-weight: 600;
+    color: var(--text-dark);
+}
+
+.skill-bar-outer {
+    background-color: #e0e0e0;
+    border-radius: 8px;
+    height: 12px;
+    overflow: hidden;
+    position: relative;
+}
+
+.skill-bar-inner {
+    height: 100%;
+    border-radius: 8px;
+    width: 0;
+    transition: width 1.5s ease-out;
+}
+
+.skill-percentage {
+    position: absolute;
+    right: 10px;
+    top: 50%;
+    transform: translateY(-50%);
+    font-size: 0.9rem;
+    color: #fff;
+    font-weight: bold;
+    text-shadow: 1px 1px 2px rgba(0,0,0,0.3);
+    z-index: 1;
+}
+
+/* Tools Grid Styling */
+.tools-category h3 {
+    font-size: 2rem;
+    color: var(--text-dark);
+    margin-top: 40px;
+    margin-bottom: 25px;
+    text-align: center;
+    position: relative;
+    font-weight: 700;
+}
+
+.tools-category h3:not(:first-child) {
+    margin-top: 60px;
+}
+
+.tools-category h3::after {
+    content: '';
+    display: block;
+    width: 80px;
+    height: 4px;
+    background: linear-gradient(90deg, #ff4d4d, #ff8080); /* Пример градиента для категории инструментов */
+    margin: 10px auto 0;
+    border-radius: 2px;
+}
+
+.tools-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+    gap: 20px;
+    margin-top: 30px;
+}
+
+.tool-item {
+    background-color: #f0f0f0;
+    border-radius: 12px;
+    padding: 20px;
+    text-align: center;
+    font-size: 1.1rem;
+    font-weight: 600;
+    color: var(--text-dark);
+    box-shadow: 0 4px 10px rgba(0,0,0,0.08);
+    transition: transform 0.2s ease, background-color 0.2s ease, box-shadow 0.2s ease;
+    cursor: default;
+}
+
+.tool-item:hover {
+    transform: translateY(-5px);
+    background-color: #e8e8e8;
+    box-shadow: 0 6px 15px rgba(0,0,0,0.12);
+}
+
+
+/* ======================================= */
+/* MEDIA QUERIES (для skills.css)        */
+/* ======================================= */
+
+@media (max-width: 992px) {
+    .hero, .skills-section {
+        padding-left: 40px;
+        padding-right: 40px;
+    }
+    .hero-content h1 {
+        font-size: 3.5rem;
+    }
+    .hero-content p {
+        font-size: 1.2rem;
+    }
+    .skills-tabs-container {
+        gap: 15px;
+        padding: 8px;
+    }
+    .skills-tab {
+        padding: 10px 20px;
+        font-size: 1rem;
+    }
+    .skills-tab i[data-lucide] {
+        width: 20px;
+        height: 20px;
+    }
+    .skill-categories h3, .tools-category h3 {
+        font-size: 1.8rem;
+    }
+    .skill-item {
+        font-size: 1rem;
+    }
+    .tool-item {
+        font-size: 1rem;
+        padding: 15px;
+    }
+    .tools-grid {
+        grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+    }
+}
+
+@media (max-width: 768px) {
+    .hero, .skills-section {
+        padding-left: 20px;
+        padding-right: 20px;
+    }
+    .hero-content h1 {
+        font-size: 2.8rem;
+    }
+    .hero-content p {
+        font-size: 1rem;
+    }
+    .skills-tabs-container {
+        flex-direction: column;
+        width: 100%;
+        max-width: 300px;
+        margin-left: auto;
+        margin-right: auto;
+    }
+    .skills-tab {
+        justify-content: center;
+        width: 100%;
+    }
+    .skills-content {
+        padding: 30px;
+    }
+    .skill-categories h3, .tools-category h3 {
+        font-size: 1.5rem;
+    }
+    .skill-item {
+        font-size: 0.95rem;
+    }
+    .tool-item {
+        font-size: 0.95rem;
+        padding: 12px;
+    }
+    .tools-grid {
+        grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+        gap: 15px;
+    }
+}
+
+@media (max-width: 480px) {
+    .hero, .skills-section {
+        padding-left: 15px;
+        padding-right: 15px;
+    }
+    .hero-content h1 {
+        font-size: 2rem;
+    }
+    .hero-content p {
+        font-size: 0.9rem;
+    }
+    .skills-content {
+        padding: 20px;
+    }
+    .skill-categories h3, .tools-category h3 {
+        font-size: 1.3rem;
+    }
+    .skill-item {
+        font-size: 0.9rem;
+    }
+    .tool-item {
+        font-size: 0.85rem;
+        padding: 10px;
+    }
+    .tools-grid {
+        grid-template-columns: repeat(auto-fit, minmax(100px, 1fr));
+        gap: 10px;
+    }
+}

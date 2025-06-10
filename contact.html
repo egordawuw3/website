@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Главная — Sapphire</title>
+  <link href="https://fonts.googleapis.com/css2?family=Comfortaa:wght@600&display=swap" rel="stylesheet" />
+  <script src="https://unpkg.com/lucide@latest"></script>
+  <link rel="stylesheet" href="assets/css/styles.css" />
+</head>
+<body>
+
+  <div id="loadingScreen">
+    <div class="title">Sapphire</div>
+    <div class="loadingOuter">
+      <div class="loadingInner"></div>
+    </div>
+  </div>
+
+  <div class="sidebar">
+    <h2>Sapphire</h2>
+    <a href="index.html" class="nav-link"><i data-lucide="home"></i> Главная</a>
+    <a href="projects.html" class="nav-link"><i data-lucide="folder"></i> Проекты</a>
+    <a href="skills.html" class="nav-link"><i data-lucide="zap"></i> Навыки</a>
+    <a href="team.html" class="nav-link"><i data-lucide="users"></i> Участники</a>
+    <a href="contact.html" class="nav-link"><i data-lucide="mail"></i> Контакты</a>
+  </div>
+
+  <div id="mainContent" class="show">
+    <div class="hero">
+      <div class="hero-content">
+        <h1>Контакты</h1>
+        <p>Свяжитесь с нами</p>
+        </div>
+    </div>
+
+
+
+    <section class="contact-section-index">
+      <div class="contact-form-card-index">
+        <h2 class="form-title">Свяжитесь со мной</h2>
+        <form action="#" method="POST" class="contact-form-index">
+          <div class="form-group-index">
+            <label for="name-index"><i data-lucide="user"></i> Ваше имя</label>
+            <input type="text" id="name-index" name="name" placeholder="Ваше имя" required>
+          </div>
+          <div class="form-group-index">
+            <label for="email-index"><i data-lucide="mail"></i> Электронная почта</label>
+            <input type="email" id="email-index" name="email" placeholder="hello@example.com" required>
+          </div>
+          <div class="form-group-index full-width">
+            <label for="message-index"><i data-lucide="message-square"></i> Сообщение</label>
+            <textarea id="message-index" name="message" rows="6" placeholder="Расскажите о вашем проекте или задайте вопрос..." required></textarea>
+          </div>
+          <button type="submit" class="submit-button-index"><i data-lucide="send"></i> Отправить сообщение</button>
+        </form>
+      </div>
+
+      <div class="contact-info-cards-index">
+        <div class="info-card-index email-card-index">
+          <div class="icon-wrapper-index"><i data-lucide="mail"></i></div>
+          <h3>Напишите мне</h3>
+          <p class="contact-value-index">nulled@querr.lol</p>
+        </div>
+
+        <div class="info-card-index chat-card-index">
+          <div class="icon-wrapper-index"><i data-lucide="message-circle"></i></div>
+          <h3>Давайте пообщаемся</h3>
+          <p>Discord: <span class="contact-value-index">@titanosetv</span></p>
+          <p>Telegram: <span class="contact-value-index">@Null_asm</span></p>
+        </div>
+      </div>
+    </section>
+    </div>
+
+  <script src="assets/js/script.js"></script>
+</body>
+</html>

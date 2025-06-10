@@ -1,0 +1,765 @@
+/* Общие настройки */
+body, html {
+  height: 100%;
+  font-family: 'Comfortaa', sans-serif;
+  margin: 0;
+  padding: 0;
+  background: linear-gradient(145deg, #f5f7ff, #eaeaff); /* Светлый фон для всей страницы */
+  color: #191e27; /* Темный текст для светлого фона */
+  overflow-x: hidden;
+}
+
+/* Загрузка */
+#loadingScreen {
+  position: fixed;
+  inset: 0;
+  background: linear-gradient(135deg, #1a183f, #100c29); /* Темный фон для экрана загрузки */
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  z-index: 999;
+  transition: opacity 0.8s ease, visibility 0.8s;
+}
+#loadingScreen.hide {
+  opacity: 0;
+  visibility: hidden;
+  pointer-events: none;
+}
+.title {
+  font-size: 3.5rem;
+  font-weight: 600;
+  letter-spacing: 0.2em;
+  color: #c0b9ff;
+  margin-bottom: 40px;
+}
+.loadingOuter {
+  width: 240px;
+  height: 6px;
+  background: rgba(200, 200, 255, 0.1);
+  border-radius: 20px;
+  overflow: hidden;
+}
+.loadingInner {
+  height: 100%;
+  background: linear-gradient(90deg, #6c63ff, #8ab4f8);
+  border-radius: 20px;
+  width: 0;
+  animation: loadingAnim 2.8s ease-in-out forwards;
+}
+@keyframes loadingAnim {
+  0% { width: 0; }
+  50% { width: 70%; }
+  100% { width: 100%; }
+}
+
+/* Sidebar */
+.sidebar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 230px;
+  height: 100vh;
+  background: linear-gradient(180deg, #1e1a40, #0f0b2c); /* Темный фон для сайдбара */
+  color: #ddd;
+  padding: 40px 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 30px;
+  box-shadow: 4px 0 15px rgba(0,0,0,0.25);
+  z-index: 10;
+}
+.sidebar h2 {
+  font-size: 1.6rem;
+  margin-bottom: 50px;
+  color: #bcb4ff;
+  text-align: center;
+}
+.nav-link {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  font-size: 1rem;
+  color: #d0ceff;
+  text-decoration: none;
+  padding: 8px 12px;
+  border-radius: 10px;
+  transition: background-color 0.2s ease, color 0.2s ease;
+  cursor: pointer;
+}
+.nav-link:hover, .nav-link:focus {
+  background: rgba(255,255,255,0.05);
+  color: #ffffff;
+  text-shadow: 0 0 6px rgba(255,255,255,0.2);
+  outline: none;
+}
+.nav-link.active {
+  background: rgba(255,255,255,0.1);
+  color: #ffffff;
+  box-shadow: 0 0 10px rgba(108, 99, 255, 0.3);
+}
+
+/* Основной контент */
+#mainContent {
+  margin-left: 230px;
+  padding: 60px;
+  transition: margin-left 0.5s ease;
+}
+
+/* Hero Section Styles */
+.hero {
+  background: linear-gradient(135deg, #1a183f, #100c29); /* Темный фон для Hero */
+  color: #fff;
+  padding: 100px 60px;
+  text-align: center;
+  margin-bottom: 60px;
+  border-radius: 20px;
+  box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+}
+
+.hero-content {
+  max-width: 900px;
+  margin: 0 auto;
+}
+
+.hero h1 {
+  font-size: 3.5rem;
+  margin-bottom: 25px;
+  color: #c0b9ff;
+  text-shadow: 0 0 15px rgba(192, 185, 255, 0.4);
+}
+
+.hero p {
+  font-size: 1.3rem;
+  margin-bottom: 40px;
+  color: #d0ceff;
+}
+
+.button {
+  display: inline-block;
+  padding: 14px 30px;
+  background-color: #6c63ff;
+  color: #fff;
+  text-decoration: none;
+  border-radius: 10px;
+  font-size: 1.15rem;
+  font-weight: 600;
+  transition: background-color 0.3s ease, transform 0.2s ease;
+  box-shadow: 0 6px 15px rgba(108, 99, 255, 0.4);
+}
+
+.button:hover {
+  background-color: #8ab4f8;
+  transform: translateY(-2px);
+  box-shadow: 0 8px 20px rgba(138, 180, 248, 0.5);
+}
+
+
+/* Сетка карточек (Statistical Info Cards) */
+.cardGrid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 30px;
+  margin-bottom: 60px;
+}
+.infoCard {
+  background: #ffffff;
+  border-radius: 16px;
+  padding: 25px;
+  box-shadow: 0 8px 16px rgba(0,0,0,0.05);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  cursor: default;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  color: #191e27;
+  border: none;
+}
+.infoCard:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 12px 24px rgba(0,0,0,0.1);
+}
+
+.infoCard .card-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 15px;
+}
+
+.infoCard h3 {
+  font-size: 1.1rem;
+  margin: 0;
+  color: #1e1a40;
+  font-weight: normal;
+}
+
+.infoCard .icon-box {
+  background-color: rgba(108, 99, 255, 0.1);
+  padding: 8px;
+  border-radius: 8px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.infoCard .icon-box i[data-lucide] {
+  width: 20px;
+  height: 20px;
+  color: #6c63ff;
+}
+
+.infoCard .main-number {
+  font-size: 3.2rem;
+  font-weight: 600;
+  color: #1e1a40;
+  margin-bottom: 10px;
+}
+
+.infoCard .growth-text {
+  font-size: 0.85rem;
+  color: #4d4d66;
+  display: flex;
+  align-items: center;
+  gap: 5px;
+}
+
+.infoCard .growth-text i[data-lucide] {
+  width: 16px;
+  height: 16px;
+  color: #5cb85c;
+}
+
+
+/* Skills Section Styles - СВЕТЛАЯ ТЕМА */
+.skills-section {
+  margin-top: 60px;
+  padding: 40px 60px;
+  background: #ffffff; /* Светлый фон */
+  border-radius: 20px;
+  box-shadow: 0 8px 20px rgba(0,0,0,0.08); /* Мягкая тень */
+  color: #191e27; /* Темный текст по умолчанию */
+  margin-bottom: 60px;
+}
+
+.skills-header-wrapper {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 40px;
+}
+
+.skills-section .section-title {
+  font-size: 2.5rem;
+  color: #1e1a40; /* Темный цвет для заголовка */
+  margin: 0;
+  font-weight: 600;
+}
+
+.skills-section .view-all-projects-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  color: #6c63ff; /* Основной акцентный цвет для ссылки */
+  text-decoration: none;
+  font-weight: 600;
+  font-size: 1.1rem;
+  transition: color 0.2s ease, transform 0.2s ease;
+}
+
+.skills-section .view-all-projects-link:hover {
+  color: #8ab4f8; /* Более светлый акцент при наведении */
+  transform: translateX(5px);
+}
+
+.skills-section .view-all-projects-link i[data-lucide] {
+  width: 20px;
+  height: 20px;
+}
+
+.skill-categories h3 {
+  font-size: 1.5rem;
+  color: #1e1a40; /* Темный цвет для категорий */
+  margin-top: 30px;
+  margin-bottom: 20px;
+  border-bottom: 2px solid #e0e0e0; /* Светлая граница */
+  padding-bottom: 10px;
+}
+
+.skill-item {
+  margin-bottom: 25px;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.skill-item span:first-child {
+  font-size: 1rem;
+  color: #4d4d66; /* Приглушенный темный текст для названий навыков */
+  font-weight: 500;
+}
+
+.skill-bar-outer {
+  width: 100%;
+  height: 12px;
+  background: #f0f0f0; /* Очень светлый фон для полосы */
+  border-radius: 6px;
+  overflow: hidden;
+  position: relative;
+}
+
+.skill-bar-inner {
+  height: 100%;
+  border-radius: 6px;
+  transition: width 1s ease-out;
+  /* Градиенты для полос остаются inline в HTML, они яркие и хорошо смотрятся на светлом фоне */
+}
+
+.skill-percentage {
+  position: absolute;
+  right: 10px;
+  top: 50%;
+  transform: translateY(-50%);
+  font-size: 1rem;
+  color: #191e27; /* Темный текст для контраста на светлом фоне */
+  font-weight: 700;
+  text-shadow: none; /* Убираем тень, так как фон светлый */
+}
+
+
+/* Лучшие проекты Section Styles */
+.latest-projects-section {
+  margin-top: 60px;
+  padding: 40px 60px;
+  background: #ffffff; /* Light background */
+  border-radius: 20px;
+  box-shadow: 0 8px 20px rgba(0,0,0,0.08); /* Lighter shadow for light background */
+  color: #191e27; /* Dark text for light background */
+  margin-bottom: 60px; /* Added margin below this section */
+}
+
+.projects-header-wrapper {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 40px;
+}
+
+.section-title {
+  font-size: 2.5rem;
+  color: #1e1a40; /* Darker color for section title */
+  margin: 0;
+  font-weight: 600;
+}
+
+.view-all-projects-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  color: #6c63ff; /* Primary accent color */
+  text-decoration: none;
+  font-weight: 600;
+  font-size: 1.1rem;
+  transition: color 0.2s ease, transform 0.2s ease;
+}
+
+.view-all-projects-link:hover {
+  color: #8ab4f8; /* Lighter primary accent on hover */
+  transform: translateX(5px);
+}
+
+.view-all-projects-link i[data-lucide] {
+  width: 20px;
+  height: 20px;
+}
+
+.projects-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 30px;
+}
+
+.project-card {
+  background: #ffffff; /* White background */
+  border-radius: 16px;
+  box-shadow: 0 8px 20px rgba(0,0,0,0.08); /* Lighter shadow for light cards */
+  overflow: hidden;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  cursor: pointer;
+  display: flex;
+  flex-direction: column;
+}
+
+.project-card:hover {
+  transform: translateY(-8px);
+  box-shadow: 0 15px 30px rgba(0,0,0,0.15); /* Stronger shadow on hover */
+}
+
+.project-thumbnail {
+  width: 100%;
+  height: 200px;
+  object-fit: cover;
+  display: block;
+}
+
+.project-info {
+  padding: 25px;
+  flex-grow: 1;
+  display: flex;
+  flex-direction: column;
+}
+
+.project-info h3 {
+  font-size: 1.3rem;
+  color: #1e1a40; /* Darker color for project titles */
+  margin-bottom: 12px;
+  font-weight: 600;
+}
+
+.project-info p {
+  font-size: 0.95rem;
+  color: #4d4d66; /* Muted dark text for description */
+  margin-bottom: 25px;
+  line-height: 1.5;
+}
+
+.project-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  color: #6c63ff; /* Primary accent color for links */
+  text-decoration: none;
+  font-weight: 600;
+  font-size: 0.95rem;
+  transition: color 0.2s ease, transform 0.2s ease;
+  margin-top: auto;
+}
+
+.project-link:hover {
+  color: #8ab4f8;
+  transform: translateX(5px);
+}
+
+.project-link i[data-lucide] {
+  width: 18px;
+  height: 18px;
+}
+
+
+/* НОВАЯ СЕКЦИЯ КОНТАКТОВ В INDEX.HTML - СВЕТЛАЯ И МИНИМАЛИСТИЧНАЯ */
+.contact-section-index {
+  display: flex;
+  gap: 40px;
+  margin-top: 60px; /* Отступ от предыдущей секции */
+  padding: 40px 60px; /* Внутренние отступы */
+  background: #ffffff; /* Светлый фон для всей секции */
+  border-radius: 20px;
+  box-shadow: 0 8px 20px rgba(0,0,0,0.08); /* Мягкая тень */
+  color: #191e27; /* Темный текст по умолчанию для этой секции */
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.contact-form-card-index {
+  background: #ffffff; /* Светлый фон для карточки формы */
+  border-radius: 20px;
+  box-shadow: 0 8px 20px rgba(0,0,0,0.05); /* Мягкая тень */
+  padding: 40px;
+  flex: 2;
+  min-width: 400px;
+  color: #191e27; /* Темный текст */
+  border: 1px solid #f0f0f0; /* Легкая граница */
+}
+
+.contact-section-index .form-title {
+  font-size: 2.2rem;
+  color: #1e1a40; /* Темный цвет для заголовка */
+  margin-bottom: 30px;
+  border-left: 5px solid #6c63ff; /* Акцентный цвет для границы */
+  padding-left: 15px;
+  font-weight: 600;
+}
+
+.contact-form-index .form-group-index {
+  margin-bottom: 25px;
+}
+
+.contact-form-index .form-group-index label {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-size: 0.95rem;
+  color: #4d4d66; /* Темный, приглушенный цвет для подписей полей */
+  margin-bottom: 10px;
+  font-weight: 500;
+}
+
+.contact-form-index .form-group-index label i[data-lucide] {
+  width: 18px;
+  height: 18px;
+  color: #6c63ff; /* Акцентный цвет для иконок */
+}
+
+.contact-form-index input[type="text"],
+.contact-form-index input[type="email"],
+.contact-form-index textarea {
+  width: calc(100% - 24px);
+  padding: 12px;
+  border: 1px solid #e0e0e0; /* Светлая граница */
+  border-radius: 8px;
+  font-family: 'Comfortaa', sans-serif;
+  font-size: 1rem;
+  color: #191e27; /* Темный текст для инпутов */
+  background-color: #f9f9f9; /* Очень светлый фон для инпутов */
+  transition: border-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+.contact-form-index input::placeholder,
+.contact-form-index textarea::placeholder {
+  color: #a0a0a0; /* Светлый серый плейсхолдер */
+}
+
+.contact-form-index input:focus,
+.contact-form-index textarea:focus {
+  border-color: #6c63ff; /* Акцентный цвет при фокусе */
+  box-shadow: 0 0 0 3px rgba(108, 99, 255, 0.2);
+  outline: none;
+  background-color: #ffffff;
+}
+
+.contact-form-index .full-width {
+  width: 100%;
+}
+
+.submit-button-index {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  padding: 15px 30px;
+  background-color: #6c63ff; /* Основной акцентный цвет для кнопки */
+  color: #fff;
+  border: none;
+  border-radius: 10px;
+  font-size: 1.15rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background-color 0.3s ease, transform 0.2s ease, box-shadow 0.3s ease;
+  box-shadow: 0 6px 15px rgba(108, 99, 255, 0.4);
+}
+
+.submit-button-index:hover {
+  background-color: #8ab4f8; /* Более светлый акцент на hover */
+  transform: translateY(-2px);
+  box-shadow: 0 8px 20px rgba(138, 180, 248, 0.5);
+}
+
+.submit-button-index i[data-lucide] {
+  width: 20px;
+  height: 20px;
+}
+
+.contact-info-cards-index {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 30px;
+  min-width: 300px;
+}
+
+.contact-info-cards-index .info-card-index {
+  background: #ffffff; /* Светлый фон для информационных карточек */
+  border-radius: 20px;
+  box-shadow: 0 8px 20px rgba(0,0,0,0.05);
+  padding: 30px;
+  color: #191e27; /* Темный текст */
+  border: 1px solid #f0f0f0; /* Легкая граница */
+}
+
+/* Вторая карточка (чат) также светлая, но с легкой разницей в акценте */
+.contact-info-cards-index .info-card-index.chat-card-index {
+  background: #fdfdff; /* Чуть более светлый, чтобы отличался, но все еще светлый */
+}
+
+.info-card-index .icon-wrapper-index {
+  background-color: rgba(108, 99, 255, 0.1); /* Легкий акцентный фон для иконок */
+  padding: 12px;
+  border-radius: 12px;
+  display: inline-flex;
+  margin-bottom: 20px;
+}
+
+.info-card-index .icon-wrapper-index i[data-lucide] {
+  width: 24px;
+  height: 24px;
+  color: #6c63ff; /* Акцентный цвет для иконок */
+}
+
+
+.info-card-index h3 {
+  font-size: 1.3rem;
+  color: #1e1a40; /* Темный заголовок */
+  margin-bottom: 15px;
+  font-weight: 600;
+}
+
+.info-card-index p {
+  font-size: 1rem;
+  color: #4d4d66; /* Приглушенный темный текст */
+  margin-bottom: 8px;
+}
+
+.info-card-index .contact-value-index {
+  font-weight: 600;
+  color: #1e1a40; /* Более темный для значений контактов */
+  text-decoration: none;
+}
+
+/* Адаптивность */
+@media (max-width: 768px) {
+  .sidebar {
+    display: none;
+  }
+  #mainContent {
+    margin-left: 0;
+    padding: 30px 20px;
+  }
+  .hero {
+    padding: 80px 20px;
+  }
+  .hero h1 {
+    font-size: 2.5rem;
+  }
+  .hero p {
+    font-size: 1rem;
+  }
+  .button {
+    font-size: 1rem;
+    padding: 10px 20px;
+  }
+  .infoCard .main-number {
+    font-size: 2.5rem;
+  }
+  .latest-projects-section {
+    padding: 30px 20px;
+  }
+  .projects-header-wrapper {
+    flex-direction: column;
+    align-items: flex-start;
+    margin-bottom: 20px;
+  }
+  .section-title {
+    font-size: 2rem;
+    margin-bottom: 15px;
+  }
+  .view-all-projects-link {
+    font-size: 1rem;
+  }
+  .projects-grid {
+    grid-template-columns: 1fr;
+  }
+  .project-thumbnail {
+    height: 160px;
+  }
+  .project-info h3 {
+    font-size: 1.1rem;
+  }
+  .project-info p {
+    font-size: 0.85rem;
+  }
+  .project-link {
+    font-size: 0.85rem;
+  }
+  .project-link i[data-lucide] {
+    width: 16px;
+    height: 16px;
+  }
+
+  /* Responsive adjustments for skills section */
+  .skills-section {
+    padding: 30px 20px;
+  }
+  .skills-header-wrapper {
+    flex-direction: column;
+    align-items: flex-start;
+    margin-bottom: 20px;
+  }
+  .skills-section .section-title {
+    margin-bottom: 15px;
+  }
+  .skill-categories h3 {
+    font-size: 1.3rem;
+  }
+  .skill-item span:first-child {
+    font-size: 0.9rem;
+  }
+  .skill-percentage {
+    font-size: 0.9rem;
+  }
+
+  /* Адаптивность для секции контактов в index.html */
+  .contact-section-index {
+    flex-direction: column;
+    align-items: center;
+    gap: 30px;
+    padding: 30px 40px;
+  }
+  .contact-form-card-index,
+  .contact-info-cards-index {
+    min-width: unset;
+    width: 100%;
+    max-width: 600px;
+  }
+  .contact-section-index .form-title {
+    font-size: 1.8rem;
+    margin-bottom: 25px;
+  }
+  .submit-button-index {
+    font-size: 1rem;
+    padding: 12px 25px;
+  }
+  .info-card-index h3 {
+    font-size: 1.2rem;
+  }
+  .info-card-index p {
+    font-size: 0.9rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .hero h1 {
+    font-size: 2rem;
+  }
+  .hero p {
+    font-size: 0.9rem;
+  }
+  .cardGrid {
+    grid-template-columns: 1fr;
+  }
+
+  /* Responsive adjustments for skills section */
+  .skills-section {
+    padding: 20px;
+  }
+  .skills-section .section-title {
+    font-size: 1.8rem;
+  }
+  .skill-bar-outer {
+    height: 10px;
+  }
+
+  /* Адаптивность для секции контактов в index.html */
+  .contact-section-index {
+    padding: 15px 20px;
+  }
+  .contact-form-card-index,
+  .contact-info-cards-index {
+    padding: 20px;
+  }
+  .contact-section-index .form-title {
+    font-size: 1.5rem;
+  }
+  .submit-button-index {
+    width: 100%;
+    justify-content: center;
+  }
+}
