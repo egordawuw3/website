@@ -101,132 +101,77 @@
     box-shadow: 0 8px 20px rgba(0,0,0,0.08);
     overflow: hidden;
     transition: transform 0.3s ease, box-shadow 0.3s ease;
-    cursor: pointer; /* Делаем карточку кликабельной */
-    display: flex; /* Важно для flex-direction: column; и height: 100%; */
-    flex-direction: column;
-    height: 100%; /* Занимает всю высоту ячейки сетки */
-    color: #191e27; /* Общий цвет текста для карточек */
-}
-
-.project-card:hover {
-    transform: translateY(-8px);
-    box-shadow: 0 15px 30px rgba(0,0,0,0.15);
-}
-
-/* Стили для изображений проектов (включая баннеры) */
-.programming-card .project-thumbnail,
-.design-default-card .project-thumbnail,
-.design-banner-card .project-thumbnail {
-    width: 100%;
-    /* Для programming и default design */
-    height: 220px; /* Фиксированная высота превью */
-    object-fit: cover; /* Обрезает изображение, чтобы заполнить область */
-
-    /* НОВЫЕ СТИЛИ для эффекта Grayscale */
-    filter: grayscale(100%); /* Делаем изображение черно-белым */
-    transition: filter 0.5s ease-in-out; /* Плавный переход для фильтра */
-}
-
-/* Эффект при наведении на КАРТОЧКУ проекта */
-.project-card:hover .project-thumbnail {
-    filter: grayscale(0%); /* При наведении на карточку, изображение становится цветным */
-}
-
-
-/* Дизайн (Баннер) карточки - ТОЛЬКО ИЗОБРАЖЕНИЕ, без текста */
-.design-banner-card {
-    background: #100c29; /* Ещё более темный однотонный фон для баннеров */
-    padding: 0; /* Убираем паддинг */
-    border: none;
-    box-shadow: 0 8px 20px rgba(0,0,0,0.2);
+    cursor: pointer;
     display: flex;
     flex-direction: column;
-    justify-content: center; /* Центрируем изображение по вертикали */
-    align-items: center; /* Центрируем изображение по горизонтали */
-    min-height: 250px; /* Минимальная высота для баннеров, чтобы они не были слишком маленькими */
+    height: 100%;
+    color: #191e27;
+}
+
+/* Стили для превью проектов */
+.project-thumbnail {
+    width: 100%;
+    height: 220px;
+    object-fit: cover;
+    /* filter: grayscale(100%); */
+    transition: filter 0.5s ease-in-out;
+}
+
+/* Карточки с текстовой информацией (программирование, стандартный дизайн, монтаж) */
+.programming-card,
+.design-default-card,
+.montage-card {
+    display: flex;
+    flex-direction: column;
+}
+
+/* Баннерные карточки (только изображение) */
+.design-banner-card {
+    min-height: 320px;
+    aspect-ratio: 3/4;
+    padding: 0;
 }
 
 .design-banner-card .project-thumbnail {
-    /* Эти стили специфичны для баннеров, переопределяя общие height и object-fit, если нужно */
-    width: 100%;
-    height: 100%; /* Занимает всю высоту родителя (карточки) */
-    object-fit: contain; /* Сохраняет пропорции, помещая весь баннер внутри карточки */
-    border-bottom: none; /* Убираем нижнюю границу */
-}
-
-
-/* Монтаж карточки - с видеоплеером и текстом */
-.montage-card .video-container {
-    position: relative;
-    width: 100%;
-    padding-bottom: 56.25%; /* 16:9 Aspect Ratio (9 / 16 * 100%) */
-    height: 0;
-    overflow: hidden;
-    background-color: #000;
-    border-bottom: 1px solid #f0f0f0;
-}
-
-.montage-card .video-container iframe {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
     height: 100%;
-    border: 0;
+    object-fit: cover;
 }
 
-/* Общие стили для информационного блока текста (для programming и default design, montage) */
+/* Информационный блок для карточек с текстом */
 .project-info {
-    padding: 25px;
-    flex-grow: 1; /* Позволяет блоку занимать оставшееся пространство */
+    padding: 20px;
+    flex-grow: 1;
     display: flex;
     flex-direction: column;
 }
 
 .project-info h3 {
-    font-size: 1.35rem;
+    font-size: 1.25rem;
+    margin-bottom: 10px;
     color: #1e1a40;
-    margin-bottom: 12px;
-    font-weight: 600;
 }
 
 .project-info p {
-    font-size: 0.98rem;
+    font-size: 0.9rem;
+    margin-bottom: 15px;
     color: #4d4d66;
-    margin-bottom: 20px;
-    line-height: 1.6;
+    line-height: 1.5;
 }
 
-/* Стиль для кнопки "Перейти на сайт" */
+/* Размеры для специфических типов карточек */
+.design-default-card .project-thumbnail {
+    height: 220px;
+}
+
+.montage-card .project-thumbnail {
+    height: 220px;
+}
+
+/* Кнопка в карточке */
 .button-project {
-    display: inline-flex;
-    align-items: center;
-    gap: 8px;
-    padding: 10px 18px;
-    background-color: #6c63ff;
-    color: #fff;
-    text-decoration: none;
-    border-radius: 8px;
-    font-size: 0.95rem;
-    font-weight: 600;
-    cursor: pointer;
-    transition: background-color 0.3s ease, transform 0.2s ease, box-shadow 0.3s ease;
-    box-shadow: 0 4px 10px rgba(108, 99, 255, 0.3);
-    margin-top: auto; /* Прижимает кнопку к низу блока project-info */
-    align-self: flex-start; /* Выравнивает кнопку по левому краю */
+    margin-top: auto;
+    align-self: flex-start;
 }
-
-.button-project:hover {
-    background-color: #8ab4f8;
-    transform: translateY(-2px);
-    box-shadow: 0 6px 15px rgba(138, 180, 248, 0.4);
-}
-
-.button-project i[data-lucide] {
-    width: 18px;
-    height: 18px;
-}
-
 
 /* Заглушка для отсутствующих проектов */
 .no-projects-placeholder {
@@ -347,12 +292,12 @@
         grid-template-columns: 1fr; /* Одна колонка на мобильных */
     }
     .project-thumbnail {
-        height: 160px;
+        height: 180px;
         filter: grayscale(100%); /* На маленьких экранах не убираем grayscale */
     }
     /* Для баннеров на очень маленьких экранах - только превью */
     .design-banner-card {
-        min-height: 180px; /* Ещё уменьшим мин. высоту на мобильных */
+        min-height: 250px;
     }
     .design-banner-card .project-thumbnail {
         /* max-height: 200px; */ /* Закомментировано */
@@ -393,5 +338,39 @@
     }
     .no-projects-placeholder p {
         font-size: 1.2rem;
+    }
+}
+
+@media (max-width: 900px) {
+    .project-card, .design-banner-card, .montage-card-new {
+        max-width: 100%;
+        aspect-ratio: 4/3;
+    }
+    .montage-cards-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+    .montage-card-new {
+        max-width: 100%;
+        height: 340px;
+    }
+}
+@media (max-width: 600px) {
+    .project-card, .design-banner-card, .montage-card-new {
+        aspect-ratio: 4/3;
+        border-radius: 12px;
+    }
+    .project-info, .montage-card-content {
+        padding: 12px 7px 12px;
+    }
+    .project-card img, .design-banner-card img, .montage-card-new img {
+        border-radius: 12px 12px 0 0;
+    }
+    .montage-cards-grid {
+        grid-template-columns: 1fr;
+        padding: 20px 0;
+    }
+    .montage-card-new {
+        height: 260px;
+        max-width: 100%;
     }
 }
